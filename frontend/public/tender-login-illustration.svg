@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <!-- Definitions for gradients and shadows -->
+  <defs>
+    <!-- Background glow gradient -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EFF6FF" />
+      <stop offset="100%" stop-color="#F8FAFC" stop-opacity="0" />
+    </radialGradient>
+    
+    <!-- Primary Blue Gradient -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1E40AF" />
+    </linearGradient>
+
+    <!-- Teal Gradient -->
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D9488" />
+      <stop offset="100%" stop-color="#115E59" />
+    </linearGradient>
+
+    <!-- Gold/Yellow Accent for folders -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+
+    <!-- Green Success Stamp Gradient -->
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    
+    <!-- Card Drop Shadow -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Background glow -->
+  <circle cx="300" cy="300" r="280" fill="url(#bgGlow)" />
+
+  <!-- Construction / Infrastructure Silhouette in the Background -->
+  <g opacity="0.12" transform="translate(100, 320)">
+    <!-- Buildings -->
+    <rect x="0" y="40" width="60" height="120" rx="3" fill="#1E40AF" />
+    <rect x="75" y="10" width="80" height="150" rx="4" fill="#1E40AF" />
+    <rect x="170" y="60" width="70" height="100" rx="3" fill="#1E40AF" />
+    
+    <!-- Building Windows (grid pattern) -->
+    <rect x="15" y="55" width="10" height="15" rx="1" fill="#FFFFFF" />
+    <rect x="35" y="55" width="10" height="15" rx="1" fill="#FFFFFF" />
+    <rect x="15" y="80" width="10" height="15" rx="1" fill="#FFFFFF" />
+    <rect x="35" y="80" width="10" height="15" rx="1" fill="#FFFFFF" />
+    <rect x="90" y="25" width="15" height="20" rx="1" fill="#FFFFFF" />
+    <rect x="120" y="25" width="15" height="20" rx="1" fill="#FFFFFF" />
+    <rect x="90" y="55" width="15" height="20" rx="1" fill="#FFFFFF" />
+    <rect x="120" y="55" width="15" height="20" rx="1" fill="#FFFFFF" />
+    <rect x="90" y="85" width="15" height="20" rx="1" fill="#FFFFFF" />
+    <rect x="120" y="85" width="15" height="20" rx="1" fill="#FFFFFF" />
+
+    <!-- Construction Crane -->
+    <path d="M280,160 L280,30 L210,0 L200,0 L200,10 L270,30 L270,160 Z" fill="#1E40AF" />
+    <path d="M280,35 L400,35 L280,75 Z" fill="#1E40AF" />
+    <line x1="370" y1="35" x2="370" y2="100" stroke="#1E40AF" stroke-width="2" />
+    <rect x="360" y="100" width="20" height="15" fill="#1E40AF" />
+  </g>
+
+  <!-- Tender Folder and Document Archiving Stack -->
+  <g transform="translate(130, 260)" filter="url(#shadow)">
+    <!-- Folder Base -->
+    <path d="M0,20 L80,20 C85,20 88,15 92,10 L105,10 C110,10 115,15 115,20 L300,20 C308,20 315,27 315,35 L315,200 C315,208 308,215 300,215 L15,215 C7,215 0,208 0,200 Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2" />
+    <!-- Folder Tab Front Cover -->
+    <path d="M0,50 C0,42 7,35 15,35 L300,35 C308,35 315,42 315,50 L315,200 C315,208 308,215 300,215 L15,215 C7,215 0,208 0,200 Z" fill="url(#blueGrad)" />
+    <!-- Label on Folder -->
+    <rect x="40" y="70" width="120" height="25" rx="3" fill="#FFFFFF" opacity="0.9" />
+    <rect x="50" y="78" width="80" height="4" rx="1" fill="#1E40AF" />
+    <rect x="50" y="86" width="50" height="3" rx="1" fill="#3B82F6" />
+    <circle cx="145" cy="82" r="5" fill="#10B981" />
+  </g>
+
+  <!-- Floating Tender Documents -->
+  <g transform="translate(200, 140)" filter="url(#shadow)">
+    <!-- Main Checklist Document Card -->
+    <rect x="0" y="0" width="240" height="310" rx="12" fill="#FFFFFF" stroke="#EFF6FF" stroke-width="2" />
+    
+    <!-- Clipboard Top Header Bar -->
+    <path d="M60,0 L180,0 C185,0 190,5 190,10 L190,20 L50,20 L50,10 C50,5 55,0 60,0 Z" fill="#94A3B8" />
+    <circle cx="120" cy="10" r="4" fill="#334155" />
+
+    <!-- Document Title -->
+    <rect x="25" y="45" width="130" height="12" rx="2" fill="#1E40AF" />
+    <rect x="25" y="65" width="80" height="8" rx="2" fill="#64748B" />
+
+    <!-- Checklist Items (Rows of content) -->
+    <g transform="translate(25, 95)">
+      <!-- Item 1: Complete -->
+      <circle cx="10" cy="10" r="9" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5" />
+      <path d="M7,10 L9,12 L13,8" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <rect x="30" y="6" width="140" height="6" rx="1.5" fill="#334155" />
+      <rect x="30" y="16" width="80" height="4" rx="1" fill="#94A3B8" />
+    </g>
+
+    <g transform="translate(25, 140)">
+      <!-- Item 2: Complete -->
+      <circle cx="10" cy="10" r="9" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5" />
+      <path d="M7,10 L9,12 L13,8" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <rect x="30" y="6" width="125" height="6" rx="1.5" fill="#334155" />
+      <rect x="30" y="16" width="100" height="4" rx="1" fill="#94A3B8" />
+    </g>
+
+    <g transform="translate(25, 185)">
+      <!-- Item 3: Pending/In Progress -->
+      <circle cx="10" cy="10" r="9" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5" />
+      <path d="M10,6 L10,14 M6,10 L14,10" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" fill="none" />
+      <rect x="30" y="6" width="150" height="6" rx="1.5" fill="#334155" />
+      <rect x="30" y="16" width="60" height="4" rx="1" fill="#94A3B8" />
+    </g>
+
+    <g transform="translate(25, 230)">
+      <!-- Item 4: Complete -->
+      <circle cx="10" cy="10" r="9" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5" />
+      <path d="M7,10 L9,12 L13,8" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <rect x="30" y="6" width="110" height="6" rx="1.5" fill="#334155" />
+      <rect x="30" y="16" width="90" height="4" rx="1" fill="#94A3B8" />
+    </g>
+  </g>
+
+  <!-- Stamp: APPROVED / COMPLIANT -->
+  <g transform="translate(350, 360) rotate(-15)" filter="url(#shadow)">
+    <!-- Seal Outline -->
+    <rect x="-5" y="-5" width="140" height="50" rx="6" fill="none" stroke="#10B981" stroke-width="3" stroke-dasharray="4 2" />
+    <rect x="0" y="0" width="130" height="40" rx="4" fill="none" stroke="#10B981" stroke-width="3" />
+    <!-- Seal Fill / Glow -->
+    <rect x="0" y="0" width="130" height="40" rx="4" fill="#D1FAE5" opacity="0.9" />
+    <!-- Seal Text -->
+    <text x="65" y="25" font-family="'Outfit', sans-serif" font-size="14" font-weight="900" fill="#047857" text-anchor="middle" letter-spacing="1">COMPLIANT</text>
+  </g>
+
+  <!-- AI Assistant & Sparkling Analytics Icon -->
+  <g transform="translate(420, 110)" filter="url(#shadow)">
+    <!-- Background Circle -->
+    <circle cx="45" cy="45" r="35" fill="url(#tealGrad)" />
+    <!-- CPU/AI Neural Connections -->
+    <path d="M35,30 H55 V50 H35 Z" fill="none" stroke="#FFFFFF" stroke-width="2" />
+    <line x1="45" y1="20" x2="45" y2="30" stroke="#FFFFFF" stroke-width="2" />
+    <line x1="45" y1="50" x2="45" y2="60" stroke="#FFFFFF" stroke-width="2" />
+    <line x1="25" y1="40" x2="35" y2="40" stroke="#FFFFFF" stroke-width="2" />
+    <line x1="55" y1="40" x2="65" y2="40" stroke="#FFFFFF" stroke-width="2" />
+    
+    <circle cx="45" cy="20" r="3" fill="#10B981" />
+    <circle cx="45" cy="60" r="3" fill="#10B981" />
+    <circle cx="25" cy="40" r="3" fill="#10B981" />
+    <circle cx="65" cy="40" r="3" fill="#10B981" />
+    
+    <!-- AI Sparkles -->
+    <path d="M15,10 L17,15 L22,17 L17,19 L15,24 L13,19 L8,17 L13,15 Z" fill="#F59E0B" />
+    <path d="M70,65 L71,68 L74,69 L71,70 L70,73 L69,70 L66,69 L69,68 Z" fill="#F59E0B" />
+  </g>
+
+  <!-- Decorative Floating Checklist Checkmarks & Graph Lines -->
+  <g transform="translate(100, 100)" opacity="0.7">
+    <!-- Blue floating checkbox -->
+    <rect x="0" y="0" width="24" height="24" rx="6" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2" />
+    <path d="M7,12 L10,15 L17,8" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+  
+  <g transform="translate(140, 70)" opacity="0.6">
+    <path d="M0,20 Q15,5 30,15 T60,5" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" fill="none" />
+    <circle cx="60" cy="5" r="4" fill="#10B981" />
+  </g>
+</svg>
