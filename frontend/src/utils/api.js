@@ -1,4 +1,9 @@
-const API_BASE = '/api';
+// In production (Vercel), VITE_API_URL points to the deployed backend URL.
+// In local dev, it falls back to '/api' which is proxied by Vite to localhost:5000.
+const API_BASE = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : '/api';
+
 
 const getHeaders = () => {
   const headers = {

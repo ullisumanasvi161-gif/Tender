@@ -21,14 +21,37 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Ensure local uploads folders exist for fallback mock mode
-const localUploadsDir = path.join(__dirname, 'uploads', 'tenders');
-if (!fs.existsSync(localUploadsDir)) {
-  fs.mkdirSync(localUploadsDir, { recursive: true });
+// Ensure local uploads folders exist (local dev only — Vercel is read-only)
+if (process.env.NODE_ENV !== 'production') {
+  const localUploadsDir = path.join(__dirname, 'uploads', 'tenders');
+  if (!fs.existsSync(localUploadsDir)) {
+    fs.mkdirSync(localUploadsDir, { recursive: true });
+  }
 }
 
-// Middlewares
-app.use(cors());
+// CORS — allow frontend origins
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  process.env.FRONTEND_URL,           // Set this in Vercel env vars
+].filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, Postman, curl)
+    if (!origin) return callback(null, true);
+    // Allow any vercel.app subdomain or localhost
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.vercel.app')
+    ) {
+      return callback(null, true);
+    }
+    callback(new Error(`CORS blocked: ${origin}`));
+  },
+  credentials: true,
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -38,8 +61,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve mock uploads if any
-app.use('/mock-uploads', express.static(path.join(__dirname, 'uploads')));
+// Serve mock uploads if any (local dev only)
+if (process.env.NODE_ENV !== 'production') {
+  app.use('/mock-uploads', express.static(path.join(__dirname, 'uploads')));
+}
 
 // Mount API routes
 app.use('/api/auth', authRoutes);
@@ -54,16 +79,16 @@ app.get('/', (req, res) => {
   res.json({ message: 'AI Tender Preparation Checklist Generator API - Running (Supabase)' });
 });
 
-// Connect to Supabase & Start Server
-const PORT = process.env.PORT || 5000;
+// Initialize Supabase connection + seed users
+connectDB();
 
-const startServer = async () => {
-  // Connect to Supabase and seed default users if needed
-  await connectDB();
-
+// Local dev: start the server normally
+// Production (Vercel): export app as a serverless function
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    console.log(`Server running in development mode on port ${PORT}`);
   });
-};
+}
 
-startServer();
+export default app;
