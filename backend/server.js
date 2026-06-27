@@ -29,28 +29,17 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-// CORS — allow frontend origins
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:3000',
-  process.env.FRONTEND_URL,           // Set this in Vercel env vars
-].filter(Boolean);
-
+// CORS — allow all origins in production (tighten after deployment confirmed working)
 app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (mobile apps, Postman, curl)
-    if (!origin) return callback(null, true);
-    // Allow any vercel.app subdomain or localhost
-    if (
-      allowedOrigins.includes(origin) ||
-      origin.endsWith('.vercel.app')
-    ) {
-      return callback(null, true);
-    }
-    callback(new Error(`CORS blocked: ${origin}`));
-  },
+  origin: true,           // Allow ALL origins — tighten this after testing
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+// Handle preflight OPTIONS requests explicitly
+app.options('*', cors());
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
